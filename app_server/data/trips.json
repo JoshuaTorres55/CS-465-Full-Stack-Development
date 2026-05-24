@@ -1,0 +1,18 @@
+[
+    {
+      "code": "GALR2601",
+      "name": "Gale Reef",
+      "image": "reef1.jpg",
+      "resort": "Gale Reef Resort",
+      "perPerson": "299.00",
+      "description": "<p>A beautiful getaway close to the coral reefs...</p>"
+    },
+    {
+      "code": "DAWR2602",
+      "name": "Dawson Retreat",
+      "image": "buffet.jpg",
+      "resort": "Dawson All-Inclusive",
+      "perPerson": "599.00",
+      "description": "<p>Relax in luxury at our premium ocean-side retreat. Enjoy all-inclusive world-class dining, pristine private beaches, and beautiful scenic views right from your balcony.</p>"
+    }
+  ]
