@@ -6,6 +6,9 @@ var logger = require('morgan');
 // NEW: We need the hbs module to register partials later
 var hbs = require('hbs'); 
 
+// BRING IN YOUR MONGOOSE DATABASE CONNECTION
+require('./app_server/models/db')
+
 // UPDATED: Pointing to the new location inside app_server
 var indexRouter = require('./app_server/routes/index');
 var usersRouter = require('./app_server/routes/users');

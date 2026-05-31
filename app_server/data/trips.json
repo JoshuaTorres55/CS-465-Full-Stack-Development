@@ -1,18 +1,22 @@
 [
-    {
-      "code": "GALR2601",
-      "name": "Gale Reef",
-      "image": "reef1.jpg",
-      "resort": "Gale Reef Resort",
-      "perPerson": "299.00",
-      "description": "<p>A beautiful getaway close to the coral reefs...</p>"
-    },
-    {
-      "code": "DAWR2602",
-      "name": "Dawson Retreat",
-      "image": "buffet.jpg",
-      "resort": "Dawson All-Inclusive",
-      "perPerson": "599.00",
-      "description": "<p>Relax in luxury at our premium ocean-side retreat. Enjoy all-inclusive world-class dining, pristine private beaches, and beautiful scenic views right from your balcony.</p>"
-    }
-  ]
+  {
+    "code": "GALR2601",
+    "name": "Gale Reef",
+    "length": "5 days",
+    "start": "2026-06-15T00:00:00Z",
+    "resort": "Gale Reef Resort",
+    "perPerson": "$299.00",
+    "image": "reef1.jpg",
+    "description": "<p>A beautiful getaway close to the coral reefs...</p>"
+  },
+  {
+    "code": "DAWR2602",
+    "name": "Dawson Retreat",
+    "length": "7 days",
+    "start": "2026-07-22T00:00:00Z",
+    "resort": "Dawson All-Inclusive",
+    "perPerson": "$599.00",
+    "image": "buffet.jpg",
+    "description": "<p>Relax in luxury at our premium ocean-side retreat. Enjoy all-inclusive world-class dining, pristine private beaches, and beautiful scenic views right from your balcony.</p>"
+  }
+]
