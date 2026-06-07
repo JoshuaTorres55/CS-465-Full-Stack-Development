@@ -7,12 +7,13 @@ var logger = require('morgan');
 var hbs = require('hbs'); 
 
 // BRING IN YOUR MONGOOSE DATABASE CONNECTION
-require('./app_server/models/db')
+require('./app_api/models/db');
 
 // UPDATED: Pointing to the new location inside app_server
 var indexRouter = require('./app_server/routes/index');
 var usersRouter = require('./app_server/routes/users');
 var travelRouter = require('./app_server/routes/travel'); // Added for the travel page
+var apiRouter = require('./app_api/routes/index');        // NEW: Bring in the API routes
 
 var app = express();
 
@@ -33,6 +34,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/travel', travelRouter); // This connects the /travel URL to your code
+app.use('/api', apiRouter);       // NEW: Connects the REST API endpoints to /api
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

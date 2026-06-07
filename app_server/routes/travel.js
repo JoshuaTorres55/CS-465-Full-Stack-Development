@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const ctrlTravel = require('../controllers/travel');
+const controller = require('../controllers/travel');
 
-/* GET travel page. */
-router.get('/', ctrlTravel.travel);
+/* GET travel page - maps cleanly to the travelList API fetch function */
+router.get('/', controller.travelList);
 
 module.exports = router;
