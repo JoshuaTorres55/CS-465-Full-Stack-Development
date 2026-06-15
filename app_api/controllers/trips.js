@@ -27,7 +27,30 @@ const tripsFindByCode = async (req, res) => {
     }
 };
 
+// POST: /api/trips - Adds a new trip package record into MongoDB
+const tripsAddTrip = async (req, res) => {
+    try {
+        const newTrip = await Trip.create({
+            code: req.body.code,
+            name: req.body.name,
+            length: req.body.length,
+            start: req.body.start,
+            resort: req.body.resort,
+            perPerson: req.body.perPerson,
+            image: req.body.image,
+            description: req.body.description
+        });
+        
+        // Return the newly created trip with a 201 Created status
+        return res.status(201).json(newTrip);
+    } catch (err) {
+        // If validation fails or database error occurs
+        return res.status(400).json(err);
+    }
+};
+
 module.exports = {
     tripsList,
     tripsFindByCode, 
+    tripsAddTrip // <--- Now exported and ready for the router!
 };

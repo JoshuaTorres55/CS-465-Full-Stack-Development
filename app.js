@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 // NEW: We need the hbs module to register partials later
 var hbs = require('hbs'); 
+const cors = require('cors'); // <--- 1. ADDED CORS IMPORT HERE AT THE TOP
 
 // BRING IN YOUR MONGOOSE DATABASE CONNECTION
 require('./app_api/models/db');
@@ -24,17 +25,20 @@ app.set('view engine', 'hbs');
 // NEW: This tells the engine where to find your header/footer partials
 hbs.registerPartials(path.join(__dirname, 'app_server', 'views', 'partials'));
 
+app.use(cors({ origin: 'http://localhost:4200' })); // <--- 2. ADDED CORS MIDDLEWARE HERE (After 'app' is defined!)
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// UPDATED: Adding the new travel route to the application
+// FIX: Put your API routes FIRST so Express handles them before HTML pages!
+app.use('/api', apiRouter);       
+
+// Main website routes follow below
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/travel', travelRouter); // This connects the /travel URL to your code
-app.use('/api', apiRouter);       // NEW: Connects the REST API endpoints to /api
+app.use('/travel', travelRouter); 
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
