@@ -22,4 +22,9 @@ export class TripDataService {
     // Swapped 'this.url' to 'this.apiBaseUrl' to match your variable above!
     return this.http.post<Trip>(this.apiBaseUrl, formData);
   }
+
+  // 3. NEW: Sends a PUT request to update an existing vacation package
+  updateTrip(formData: Trip): Observable<Trip> {
+    return this.http.put<Trip>(this.apiBaseUrl + '/' + formData.code, formData);
+  }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Trip } from '../models/trip';
 
@@ -12,6 +13,12 @@ import { Trip } from '../models/trip';
 export class TripCardComponent implements OnInit {
   @Input() trip!: Trip;
 
-  constructor() { }
+  constructor(private router: Router) { }
+
   ngOnInit(): void { }
+
+  editTrip(trip: Trip): void {
+    localStorage.setItem('tripCode', trip.code);
+    this.router.navigate(['edit-trip']);
+  }
 }

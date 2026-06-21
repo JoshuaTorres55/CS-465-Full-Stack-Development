@@ -49,8 +49,36 @@ const tripsAddTrip = async (req, res) => {
     }
 };
 
+const tripsUpdateTrip = async (req, res) => {
+    try {
+        const trip = await Trip.findOneAndUpdate(
+            { 'code': req.params.tripCode }, 
+            { 
+                code: req.body.code,
+                name: req.body.name,
+                length: req.body.length,
+                start: req.body.start,
+                resort: req.body.resort,
+                perPerson: req.body.perPerson,
+                image: req.body.image,
+                description: req.body.description
+            },
+            { new: true } 
+        ).exec();
+
+        if (!trip) {
+            return res.status(404).json({ "message": "Trip not found" });
+        }
+        return res.status(200).json(trip);
+    } catch (err) {
+        return res.status(400).json(err);
+    }
+};
+
+// UPDATE THIS EXPORT SECTION
 module.exports = {
     tripsList,
     tripsFindByCode, 
-    tripsAddTrip // <--- Now exported and ready for the router!
+    tripsAddTrip,
+    tripsUpdateTrip // Make sure to add this!
 };

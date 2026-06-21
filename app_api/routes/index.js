@@ -8,8 +8,9 @@ router
     .get(ctrlTrips.tripsList)   // Fetches the list of trips
     .post(ctrlTrips.tripsAddTrip); // Handles adding a new trip!
 
-router
+    router
     .route('/trips/:tripCode')
-    .get(ctrlTrips.tripsFindByCode);
+    .get(ctrlTrips.tripsFindByCode)
+    .put(ctrlTrips.tripsUpdateTrip);
 
 module.exports = router;
