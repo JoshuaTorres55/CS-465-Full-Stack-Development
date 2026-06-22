@@ -33,10 +33,15 @@ if (process.platform === 'win32') {
 
 // Global shutdown tracking wrapper
 const gracefulShutdown = (msg, callback) => {
-    mongoose.connection.close(() => {
-        console.log(`Mongoose disconnected through ${msg}`);
-        callback();
-    });
+    mongoose.connection.close()
+        .then(() => {
+            console.log(`Mongoose disconnected through ${msg}`);
+            callback();
+        })
+        .catch(err => {
+            console.error(`Error during shutdown: ${err}`);
+            callback();
+        });
 };
 
 // Intercept nodemon live-reload runtime refresh triggers
@@ -55,3 +60,4 @@ process.on('SIGINT', () => {
 
 // Link your existing trip model definition directly into your data pipeline
 require('./travlr');
+require('./user');
